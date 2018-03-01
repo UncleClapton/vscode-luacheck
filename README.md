@@ -1,16 +1,11 @@
-# Lua lint for visual studio code
-
-[![Build Status](https://travis-ci.org/satoren/lualint_for_vscode.svg?branch=master)](https://travis-ci.org/satoren/lualint_for_vscode)
-[![Build status](https://ci.appveyor.com/api/projects/status/her345kmbtg0htp7/branch/master?svg=true)](https://ci.appveyor.com/project/satoren/lualint-for-vscode/branch/master)
-
-
+# Luacheck for Visual Studio Code
 
 ## Features
-* Syntax error check
-* Support all platforms for Visual Studio Code with no dependency
 * Static analyze by [luacheck](https://github.com/mpeterv/luacheck) (default on)
+* Syntax error check when luacheck is off
+* Supports all platforms for Visual Studio Code with no dependency
 
-![animation](https://raw.githubusercontent.com/satoren/lualint_for_vscode/master/images/lualint.gif)
+![animation](https://raw.githubusercontent.com/rog2/vscode-luacheck/master/README.gif)
 
 ## Extension Settings
 
