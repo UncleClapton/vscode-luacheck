@@ -16,12 +16,12 @@ let L = new LuaVM.Lua.State();
 let checker = new luacheck.luacheck(L)
 
 interface Settings {
-    lualint: LuaLintSetting;
+    luacheck: LuacheckSetting;
 }
 
 // These are the example settings we defined in the client's package.json
 // file
-interface LuaLintSetting {
+interface LuacheckSetting {
     useLuacheck: boolean;
     maxNumberOfReports: number;
 }
@@ -52,8 +52,8 @@ connection.onInitialize((params): InitializeResult => {
 // as well.
 connection.onDidChangeConfiguration((change) => {
     let settings = <Settings>change.settings;
-    useLuacheck = settings.lualint.useLuacheck != null ? settings.lualint.useLuacheck : false;
-    maxNumberOfReports = settings.lualint.maxNumberOfReports || 100;
+    useLuacheck = settings.luacheck.useLuacheck != null ? settings.luacheck.useLuacheck : false;
+    maxNumberOfReports = settings.luacheck.maxNumberOfReports || 100;
     // Revalidate any open text documents
     documents.all().forEach(validateTextDocument);
 });
@@ -123,7 +123,7 @@ function syntax_error_check(text: string, uri: string) {
                 start: errorStart,
                 end: errorEnd
             },
-            source:"lualint",
+            source:"luacheck",
             message: e.message
         });
     }
@@ -160,7 +160,7 @@ function fullcheck_by_luacheck(text: string, uri: string) {
                 start: errorStart,
                 end: errorEnd
             },
-            source:"lualint",
+            source:"luacheck",
             message: report.message
         });
     }

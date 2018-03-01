@@ -11,22 +11,11 @@
 
 This extension contributes the following settings:
 
-* `lualint.useLuacheck`: If true use [luacheck](https://github.com/mpeterv/luacheck) more detail analyze. Otherwise syntax error only check.
-* `lualint.maxNumberOfReports`: Maximum number of code check reports.
-
-## Known Issues
+* `luacheck.useLuacheck`: If true use [luacheck](https://github.com/mpeterv/luacheck) more detail analyze. Otherwise syntax error only check.
+* `luacheck.maxNumberOfReports`: Maximum number of code check reports.
 
 ## Release Notes
 
-### 0.0.5
-- add watch .luacheckrc files
-- add source name for report
-- Exclude first line comment with #
-- Fix wrong column with multibyte characters
+See [CHANGELOG](CHANGELOG.md).
 
-### 0.0.4
-- [luacheck](https://github.com/mpeterv/luacheck) is enabled by default.
-- Fixed bug, even if closed the file, the problem messages remained displayed.
-
-### 0.0.2
-- Add repositry URL
+## Known Issues

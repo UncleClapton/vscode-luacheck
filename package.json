@@ -1,9 +1,9 @@
 {
-    "name": "lualint",
-    "displayName": "lua lint",
-    "description": "Static error checker for Lua",
-    "version": "0.0.5",
-    "publisher": "satoren",
+    "name": "luacheck",
+    "displayName": "Luacheck",
+    "description": "Luacheck for Visual Studio Code",
+    "version": "0.21.2",
+    "publisher": "rog2",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -12,10 +12,10 @@
     ],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/satoren/lualint_for_vscode.git"
+		"url": "https://github.com/rog2/vscode-luacheck.git"
 	},
 	"bugs": {
-		"url": "https://github.com/satoren/lualint_for_vscode/issues"
+		"url": "https://github.com/rog2/vscode-luacheck/issues"
 	},
     "activationEvents": [
         "onLanguage:lua"
@@ -24,14 +24,14 @@
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "lua-lint configuration",
+            "title": "Luacheck Configuration",
             "properties": {
-                "lualint.useLuacheck": {
+                "luacheck.useLuacheck": {
                     "type": "boolean",
                     "default": true,
                     "description": "If true use luacheck. Otherwise syntax error check only."
                 },
-                "lualint.maxNumberOfReports": {
+                "luacheck.maxNumberOfReports": {
                     "type": "number",
                     "default": 100,
                     "description": "Maximum number of code check reports."

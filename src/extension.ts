@@ -18,11 +18,11 @@ export function activate(context: vscode.ExtensionContext) {
     let clientOptions: LanguageClientOptions = {
         documentSelector: ['lua'],
         synchronize: {
-            configurationSection: 'lualint',
+            configurationSection: 'luacheck',
             fileEvents: vscode.workspace.createFileSystemWatcher('**/.luacheckrc')
         }
     }
-    let disposable = new LanguageClient('lualint', 'Language Server Lua', serverOptions, clientOptions).start();
+    let disposable = new LanguageClient('luacheck', 'Language Server Lua', serverOptions, clientOptions).start();
 
     context.subscriptions.push(disposable);
 }
