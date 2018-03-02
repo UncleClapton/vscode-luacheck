@@ -128,6 +128,11 @@ export class luacheck {
             try {
                 while (true) {
                     let root = mountdir.split(path.sep).slice(0, -1).join(path.sep);
+                    // Handle windows filesystem root like D:\
+                    if (token.root.startsWith(root)) {
+                        this.L.chroot(token.root);
+                        break;
+                    }
                     this.L.chroot(root);
                     mountdir = root
                 }
