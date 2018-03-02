@@ -1,5 +1,9 @@
 # Luacheck for Visual Studio Code Change Log
 
+## 1.0.0 - 2018-03-02
+
+New version scheme.
+
 ## 0.21.2.1 - 2018-03-02
 
 ### Fixed

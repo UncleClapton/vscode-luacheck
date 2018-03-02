@@ -2,7 +2,7 @@
     "name": "luacheck",
     "displayName": "Luacheck",
     "description": "Luacheck for Visual Studio Code",
-    "version": "0.21.2.1",
+    "version": "1.0.0",
     "publisher": "rog2",
     "engines": {
         "vscode": "^1.5.0"
