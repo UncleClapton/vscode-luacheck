@@ -1,15 +1,19 @@
 # Luacheck for Visual Studio Code Change Log
 
-## [Unreleased]
+## 0.21.2.1 - 2018-03-02
 
-## [0.21.2] - 2018-03-02
+### Fixed
+
+- Handle windows filesystem root like `D:\` correctly.
+
+## 0.21.2 - 2018-03-02
 
 ### Changed
 
 - Upgrade [luacheck](https://github.com/mpeterv/luacheck) (0.18.0 -> 0.21.2)
 - Rename lualint to luacheck
 
-## [0.0.5] - 2017-02-19
+## 0.0.5 - 2017-02-19
 
 ### Changed
 
@@ -21,7 +25,7 @@
 
 - Wrong column with multibyte characters
 
-## [0.0.4] - 2017-02-08
+## 0.0.4 - 2017-02-08
 
 ### Changed
 
@@ -40,8 +44,3 @@
 ## 0.0.1 - 2017-02-06
 
 - Initial release
-
-[Unreleased]: https://github.com/rog2/vscode-luacheck/compare/v0.21.2...HEAD
-[0.21.2]: https://github.com/rog2/vscode-luacheck/compare/v0.0.5...v0.21.2
-[0.0.5]: https://github.com/rog2/vscode-luacheck/compare/v0.0.4...v0.0.5
-[0.0.4]: https://github.com/rog2/vscode-luacheck/compare/v0.0.2...v0.0.4
