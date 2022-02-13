@@ -1,16 +1,18 @@
 'use strict';
 
 import {
-    IPCMessageReader, IPCMessageWriter,
-    createConnection, IConnection,
-    TextDocuments, TextDocument, Diagnostic, DiagnosticSeverity,
-    InitializeParams, InitializeResult
-} from 'vscode-languageserver';
+    createConnection,
+    TextDocuments, Diagnostic, DiagnosticSeverity, TextDocumentSyncKind,
+    InitializeResult,
+    ProposedFeatures
+} from 'vscode-languageserver/node';
+import { TextDocument,  } from 'vscode-languageserver-textdocument'
 
-import Uri from 'vscode-uri'
+import { URI } from 'vscode-uri'
 import * as path from 'path';
 
 import * as luacheck from './luacheck';
+
 const LuaVM = require('./lua.vm');
 let L = new LuaVM.Lua.State();
 let checker = new luacheck.luacheck(L)
@@ -30,20 +32,18 @@ interface LuacheckSetting {
 let useLuacheck: boolean;
 let maxNumberOfReports: number;
 
-let connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
-let documents: TextDocuments = new TextDocuments();
+let connection = createConnection(ProposedFeatures.all);
+let documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
 documents.listen(connection);
 
 // After the server has started the client sends an initialize request. The server receives
-// in the passed params the rootPath of the workspace plus the client capabilities. 
-let workspaceRoot: string;
+// in the passed params the rootPath of the workspace plus the client capabilities.
 connection.onInitialize((params): InitializeResult => {
-    workspaceRoot = params.rootPath;
     return {
         capabilities: {
             // Tell the client that the server works in FULL text document sync mode
-            textDocumentSync: documents.syncKind
+            textDocumentSync: TextDocumentSyncKind.Full
         }
     }
 });
@@ -86,7 +86,7 @@ function validateTextDocument(textDocument: TextDocument): void {
 function syntax_error_check(text: string, uri: string) {
     const message_parse_reg = /..+:([0-9]+): (.+) near.*[<'](.*)['>]/;
 
-    let fspath = Uri.parse(uri).fsPath;
+    let fspath = URI.parse(uri).fsPath;
     let diagnostics: Diagnostic[] = [];
     let lineoffset = 0;
     if (text.startsWith('#')) {//exclude first line comment
@@ -134,7 +134,7 @@ function syntax_error_check(text: string, uri: string) {
 
 function fullcheck_by_luacheck(text: string, uri: string) {
 
-    let fspath = Uri.parse(uri).fsPath;
+    let fspath = URI.parse(uri).fsPath;
 
     var document_full_path = path.resolve(fspath);
 
@@ -150,7 +150,7 @@ function fullcheck_by_luacheck(text: string, uri: string) {
         let errorStart = { line: errorLineNum, character: report.column - 1 };
         let errorEnd = { line: errorLineNum, character: report.end_column };
 
-        let level = DiagnosticSeverity.Warning;
+        let level: DiagnosticSeverity = DiagnosticSeverity.Warning;
         if (report.msg) {
             level = DiagnosticSeverity.Error;
         }

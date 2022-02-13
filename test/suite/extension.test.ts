@@ -13,7 +13,7 @@ import * as path from 'path';
 
 
 
-import * as luacheck from '../src/luacheck';
+import * as luacheck from '../../src/luacheck';
 const LuaVM = require('../src/lua.vm');
 let L = new LuaVM.Lua.State();
 let checker = new luacheck.luacheck(L)

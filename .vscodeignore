@@ -3,9 +3,11 @@
 out/test/**
 test/**
 third_party/**
+script/**
 images/**
 src/**
 **/*.map
 .gitignore
+.gitmodules
+
 tsconfig.json
-vsc-extension-quickstart.md
