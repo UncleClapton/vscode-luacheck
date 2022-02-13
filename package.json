@@ -3,7 +3,7 @@
   "displayName": "Luacheck",
   "description": "Luacheck for Visual Studio Code",
   "license": "Unlicense",
-  "version": "1.1.0",
+  "version": "11.0.0",
   "publisher": "rog2",
   "engines": {
     "vscode": "^1.64.0"
